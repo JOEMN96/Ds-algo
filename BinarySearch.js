@@ -19,4 +19,17 @@ function search(arr, val) {
   return -1;
 }
 
-console.log(search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 6));
+// console.log(search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 6));
+
+function SearchPattern(string, pattern) {
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < pattern.length; j++) {
+      if (pattern[j] !== string[i + j]) break;
+      if (j == pattern.length - 1) count++;
+    }
+  }
+  return count;
+}
+
+console.log(SearchPattern("WOWWOZZINGWOZ", "WOZ"));
