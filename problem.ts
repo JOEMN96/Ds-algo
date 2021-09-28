@@ -1,17 +1,14 @@
-
-var longestCommonPrefix = function(strs:string[]) {
-    let pattern = ''
-    for (let i=0; i < strs[0].length; i++) {
-        let common = strs[0][i];
-
-        for (let j = 1; j < common.length; j++) {
-            const element = strs[j];
-            console.log(element);
-            
-        }
-    }
+var removeDuplicates = function(nums:number[]) {
+   let obj:any = {}
+   for (const val of nums) {
+      obj[val] = obj[val] ? obj[val] + 1 : obj[val] =1
+   }
+   for (let i = 0; i < nums.length; i++) {
+      
+     
+   }
+   console.log(obj);
+   
 };
 
-console.log(longestCommonPrefix(["flo","flower","flowrd"]));
-
-
+console.log(removeDuplicates([1,2,2,1,3,3]));
