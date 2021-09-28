@@ -1,25 +1,17 @@
 
-var isPalindrome = function(x:number | String) {
-    let len = x.toString().length - 1;
-    let counter = 0
-    x = x.toString() ;
-    
-    for(let i = 0; i < x.length; i++ )  {        
-         if(x[i] == x[len]) {
-             counter ++
-         }
-         len --
-    }
-    if(counter == x.length) {
-        return true
-    } else {
-        return false
-    }
+var longestCommonPrefix = function(strs:string[]) {
+    let pattern = ''
+    for (let i=0; i < strs[0].length; i++) {
+        let common = strs[0][i];
 
-    
+        for (let j = 1; j < common.length; j++) {
+            const element = strs[j];
+            console.log(element);
+            
+        }
+    }
 };
 
-// isPalindrome(-121)
-console.log(isPalindrome(-121));
+console.log(longestCommonPrefix(["flo","flower","flowrd"]));
 
 
