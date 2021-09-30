@@ -1,16 +1,19 @@
-var removeDuplicates = function(nums:number[]) {
+var removeElement = function(nums:number [], val:number) {
 
-   nums.forEach((item,i) => {
-      if(item == nums[i+1]) {
-         nums.splice(i+1,1)
-         removeDuplicates(nums)
+   for (let i = 0; i < nums.length; i++) {
+      console.log(nums[i]);
+      
+      if(nums[i] == val) {
+         nums.splice(i,1)
+         i--
       }
-   })
+   }
 
    return nums
-
+      
 };
 
-console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+console.log(removeElement([3,2,2,2,2,3],3));
+
 
 
