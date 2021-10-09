@@ -1,7 +1,7 @@
-function pivot(arr, start = 0, end = arr.length + 1) {
+function pivot(arr, start = 0, end = arr.length - 1) {
   let pivot = arr[start];
-  let swapIndex = 0;
-  for (let i = start + 1; i < arr.length; i++) {
+  let swapIndex = start;
+  for (let i = start + 1; i <= end; i++) {
     if (pivot > arr[i]) {
       //   Swap
       swapIndex++;
@@ -13,7 +13,15 @@ function pivot(arr, start = 0, end = arr.length + 1) {
   let temp = arr[start];
   arr[start] = arr[swapIndex];
   arr[swapIndex] = temp;
+  console.log(arr);
   return swapIndex;
 }
 
-pivot([7, 4, 2, 5, 3, 8, 1, 9, 6]);
+function swap(arr, i, j) {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+  return arr;
+}
+
+console.log(pivot2([7, 4, 2, 5, 3, 8, 1, 9, 6]));

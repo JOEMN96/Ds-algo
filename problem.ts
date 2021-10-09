@@ -1,18 +1,28 @@
-var removeElement = function(nums:number [], val:number) {
 
-   for (let i = 0; i < nums.length; i++) {
+let searchInsert = function(nums: number[], target:number) {
+
+   let start = 0;
+   let end = nums.length -1;
+   
+   while (start <= end) {
+      console.log(start);
       
-      if(nums[i] == val) {
-         nums.splice(i,1)
-         i--
+      let middle = Math.floor(start + end /2)
+      if(target > nums[middle]) {
+         start = middle + 1;
+      } else if (target < nums[middle]) {
+         end = middle -1
+      } else {
+         return nums[middle]
       }
    }
+   
+   return end+1
 
-   return nums
-      
+   
 };
 
-console.log(removeElement([3,2,2,2,2,3],3));
+console.log(searchInsert([1,3,5,6],4));
 
 
 
