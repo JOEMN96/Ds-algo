@@ -13,7 +13,7 @@ function search(arr, val) {
   }
 
   if (arr[middle] == val) {
-    return val;
+    return middle;
   }
 
   return -1;
@@ -32,4 +32,4 @@ function SearchPattern(string, pattern) {
   return count;
 }
 
-console.log(SearchPattern("WOWWOZZINGWOZ", "WOZ"));
+console.log(search([1, 3, 5, 6], 5));
