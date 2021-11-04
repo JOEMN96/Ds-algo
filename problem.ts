@@ -1,16 +1,29 @@
-var countNegatives = function(grid:number[][]) {
-    let count = 0;
-    for(let i= 0; i < grid.length; i++) {
-       grid[i].forEach(item => {
-          if( item < 0) {
-             count ++;
-          }
-       })
+interface Mapp {
+    [item:number]:number
+}
+
+function kWeakestRows(mat: number[][], k: number): number[] {
+
+    let mapped:Mapp = {};
+    // { '0': 2, '1': 4, '2': 1, '3': 2, '4': -1 }
+    let res = []
+
+    mat.forEach((item,index) => {
+        mapped[index] = item.indexOf(0)
+    })
+ 
+    for ( const x in mapped)  {
+        console.log(x);   
+            
     }
-    return count
+    console.log(res);
+    
+    return []
 };
-console.log(countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]));
 
-
-
-
+kWeakestRows([[1,1,0,0,0],
+    [1,1,1,1,0],
+    [1,0,0,0,0],
+    [1,1,0,0,0],
+    [1,1,1,1,1]], 
+   3)
