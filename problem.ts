@@ -1,23 +1,49 @@
-function reverseWords(s: string): string {
-  let arr = s.split(' ');
-  // @ts-ignore
-  let res = arr.map((item: string) => {
-    let res = item.split('');
-    let start = 0;
-    let end = res.length - 1;
-    while (start < end) {
-      let temp = res[start];
-      // @ts-ignore
-      res[start] = res[end];
-      // @ts-ignore
-      res[end] = temp;
-      start++;
-      end--;
-    }
-    return res.join('');
-  });
-  console.log(res);
-  return res.join(' ');
+function middleNode(head: number[]): number[] {
+  let m = Math.round(head.length / 2) - 1;
+  let e = head.length + 1;
+  let res = [];
+
+  while (m <= e) {
+    res.push(head[m]);
+    m++;
+    e--;
+  }
+  return res;
 }
 
-console.log(reverseWords('Let"s take LeetCode contest'));
+// console.log(Math.abs(-4 * -4));
+console.log(middleNode([10, 11, 12, 13, 14]));
+
+// while (s <= middle && e >= middle) {
+//   console.log(str[s], 'S');
+//   s++;
+//   if (s == middle) {
+//     console.log(0);
+//     continue;
+//   }
+//   if (e == middle) {
+//     continue;
+//     console.log(0);
+//   }
+//   console.log(str[e]);
+//   e--;
+// }
+
+// TWo
+
+// let s = 0;
+// let e = 1;
+// let end = str.length - 1;
+// let res = [];
+// // if (str[s] == c) {
+// //   res.push(0);
+// // }
+// while (s < end) {
+//   if (str[e] == c) {
+//     res.push(e - s);
+//     if (s == e) e = s + 1;
+//     s++;
+//   } else {
+//     e++;
+//   }
+// }
