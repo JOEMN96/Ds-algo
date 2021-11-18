@@ -1,49 +1,25 @@
-function middleNode(head: number[]): number[] {
-  let m = Math.round(head.length / 2) - 1;
-  let e = head.length + 1;
-  let res = [];
+function findDisappearedNumbers(nums: number[]): number[] {
+  nums = nums.sort((a, b) => a - b);
 
-  while (m <= e) {
-    res.push(head[m]);
-    m++;
-    e--;
+  let s = 0;
+  let e = nums.length - 1;
+  let next = nums[0];
+  let res: number[] = [];
+  console.log(nums);
+
+  while (s < e) {
+    next++;
+
+    if (nums[s] != nums[s - 1] && nums[s + 1] !== next) {
+      console.log(nums[s], nums[s - 1]);
+      res.push(next);
+    } else {
+      if()
+    }
+    s++;
   }
+
   return res;
 }
 
-// console.log(Math.abs(-4 * -4));
-console.log(middleNode([10, 11, 12, 13, 14]));
-
-// while (s <= middle && e >= middle) {
-//   console.log(str[s], 'S');
-//   s++;
-//   if (s == middle) {
-//     console.log(0);
-//     continue;
-//   }
-//   if (e == middle) {
-//     continue;
-//     console.log(0);
-//   }
-//   console.log(str[e]);
-//   e--;
-// }
-
-// TWo
-
-// let s = 0;
-// let e = 1;
-// let end = str.length - 1;
-// let res = [];
-// // if (str[s] == c) {
-// //   res.push(0);
-// // }
-// while (s < end) {
-//   if (str[e] == c) {
-//     res.push(e - s);
-//     if (s == e) e = s + 1;
-//     s++;
-//   } else {
-//     e++;
-//   }
-// }
+console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));
