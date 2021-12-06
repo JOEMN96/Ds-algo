@@ -4,7 +4,8 @@
   "description": "",
   "main": "BinarySearch.js",
   "scripts": {
-    "start": "nodemon --exec ts-node problem.ts"
+    "start": "nodemon --exec ts-node problem.ts",
+    "algo": "nodemon --exec ts-node algo.ts"
   },
   "repository": {
     "type": "git",
