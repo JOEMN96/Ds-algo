@@ -1,16 +1,46 @@
-function canBeTypedWords(text: string, brokenLetters: string): number {
+function countWords(words1: string[], words2: string[]): number {
   let res = 0;
-  let ar = text.split(' ');
+  let obj1: OBJ = {};
+  let obj2: OBJ = {};
 
-  ar.forEach((sen) => {
-    for (let i = 0; i < brokenLetters.length; i++) {
-      if (!sen.indexOf(brokenLetters[i])) {
-        console.log(sen);
-        res++;
-      }
+  let len = words1.length > words2.length ? words1.length : words2.length;
+
+  for (let i = 0; i < len; i++) {
+    if (i < words1.length) {
+      obj1[words1[i]] ? obj1[words1[i]]++ : (obj1[words1[i]] = 1);
     }
-  });
+    if (i < words2.length) {
+      obj2[words2[i]] ? obj2[words2[i]]++ : (obj2[words2[i]] = 1);
+    }
+  }
+
+  for (let i = 0; i < words1.length; i++) {
+    let word = words1[i];
+    if (obj1[word] == 1 && obj2[word] == 1) {
+      res++;
+    }
+  }
 
   return res;
 }
-console.log(canBeTypedWords('a b c d e', 'abcde'));
+
+interface OBJ {
+  [key: string]: string | any;
+}
+console.log(
+  countWords(
+    ['rsvyxfkbmllnsvfmiskouagjpymub', 'xqadhorgvguprqp'],
+    [
+      'rsvyxfkbmllnsvfmiskouagjpymub',
+      'xqadhorgvguprqp',
+      'wvtjffkonflbmdmw',
+      'olekom',
+      'tcnrpyshlqvsisnk',
+      'jqwigwkehsvyylrixvbmrq',
+      'irrjybaruytqixlozgtb',
+      'ebsxabicklczdjoqahxybuvav',
+      'k',
+      'hoayhbdmxipzqxkkarjcfszgaolxo',
+    ]
+  )
+);
