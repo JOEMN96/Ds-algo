@@ -1,46 +1,43 @@
-function countWords(words1: string[], words2: string[]): number {
+function minDeletionSize(strs: string[]): number {
   let res = 0;
-  let obj1: OBJ = {};
-  let obj2: OBJ = {};
-
-  let len = words1.length > words2.length ? words1.length : words2.length;
-
-  for (let i = 0; i < len; i++) {
-    if (i < words1.length) {
-      obj1[words1[i]] ? obj1[words1[i]]++ : (obj1[words1[i]] = 1);
+  let row: string[] = [];
+  for (let i = 0; i < strs.length; i++) {
+    let j = 0;
+    let temp = '';
+    while (j < strs[i].length) {
+      if (!strs[j][i]) {
+        j++;
+        continue;
+      }
+      temp += strs[j][i];
+      j++;
     }
-    if (i < words2.length) {
-      obj2[words2[i]] ? obj2[words2[i]]++ : (obj2[words2[i]] = 1);
-    }
+    row.push(temp);
   }
 
-  for (let i = 0; i < words1.length; i++) {
-    let word = words1[i];
-    if (obj1[word] == 1 && obj2[word] == 1) {
-      res++;
+  console.log(row);
+
+  row.forEach((str) => {
+    let x = 0;
+    while (x < str.length - 1) {
+      let diff = null;
+      console.log(str[x]);
+
+      // if (!str[x + 1]) {
+      //   diff = str[x - 1].charCodeAt(0) - str[x].charCodeAt(0);
+      // } else {
+      //   diff = str[x].charCodeAt(0) - str[x + 1].charCodeAt(0);
+      // }
+      if (str[x].charCodeAt(0) > str[x + 1].charCodeAt(0)) {
+        res++;
+        x++;
+        continue;
+      }
+      x++;
     }
-  }
+  });
 
   return res;
 }
 
-interface OBJ {
-  [key: string]: string | any;
-}
-console.log(
-  countWords(
-    ['rsvyxfkbmllnsvfmiskouagjpymub', 'xqadhorgvguprqp'],
-    [
-      'rsvyxfkbmllnsvfmiskouagjpymub',
-      'xqadhorgvguprqp',
-      'wvtjffkonflbmdmw',
-      'olekom',
-      'tcnrpyshlqvsisnk',
-      'jqwigwkehsvyylrixvbmrq',
-      'irrjybaruytqixlozgtb',
-      'ebsxabicklczdjoqahxybuvav',
-      'k',
-      'hoayhbdmxipzqxkkarjcfszgaolxo',
-    ]
-  )
-);
+console.log(minDeletionSize(['zyx', 'wvu', 'tsr']));

@@ -57,6 +57,28 @@ class SinglyLinkedList {
     }
     return curr;
   }
+
+  //  My test code
+  pop2(): undefined | Node {
+    if (!this.head) return undefined;
+    let curr = this.head;
+    let newTail = curr;
+
+    while (curr.next) {
+      newTail = curr;
+      curr = curr.next;
+    }
+
+    this.head = newTail;
+    this.head.next = null;
+    this.length--;
+
+    if (this.length < 1) {
+      this.head = null;
+      this.tail = null;
+    }
+    return curr;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -65,10 +87,75 @@ list.push('Hi');
 list.push('Joe');
 list.push('Mon');
 list.push('Pop');
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
+
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.pop2());
+// console.log(list.pop2());
+// console.log(list.pop2());
+// console.log(list.pop2());
+// console.log(list.length);
 
 // console.log(list);
+
+class Node2 {
+  public val: string;
+  public next: null | Node2;
+  constructor(val: string) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class Singly2 {
+  public head: Node2 | null;
+  public tail: Node2 | null;
+  public length: number;
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  push(val: string) {
+    let nwNode = new Node2(val);
+    if (!this.head) {
+      this.head = nwNode;
+      this.tail = nwNode;
+    } else {
+      this.tail.next = nwNode;
+      this.tail = nwNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  pop(): undefined | Node2 {
+    if (!this.head) return undefined;
+    let curr = this.head;
+    let newTail = curr;
+    while (curr.next) {
+      newTail = curr;
+      curr = curr.next;
+    }
+    this.length--;
+    this.tail = newTail;
+    this.tail.next = null;
+    if (this.length < 1) {
+      this.head = null;
+      this.tail = null;
+    }
+    return curr;
+  }
+}
+
+let mylist = new Singly2();
+mylist.push('1');
+mylist.push('2');
+mylist.push('3');
+
+console.log(mylist.pop());
+console.log(mylist.pop());
+console.log(mylist.pop());
+console.log(mylist);
