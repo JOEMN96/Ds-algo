@@ -1,43 +1,44 @@
-function minDeletionSize(strs: string[]): number {
-  let res = 0;
-  let row: string[] = [];
-  for (let i = 0; i < strs.length; i++) {
-    let j = 0;
-    let temp = '';
-    while (j < strs[i].length) {
-      if (!strs[j][i]) {
-        j++;
-        continue;
-      }
-      temp += strs[j][i];
-      j++;
-    }
-    row.push(temp);
-  }
+let a = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('hey');
+  }, 2000);
+});
 
-  console.log(row);
+// a.then((res) => console.log(res));
 
-  row.forEach((str) => {
-    let x = 0;
-    while (x < str.length - 1) {
-      let diff = null;
-      console.log(str[x]);
+// Apply
+let arr: number[] = [1, 2, 4, 5, 6, 78, 9];
+let res = Math.max.apply('a', arr);
+// console.log(res);
 
-      // if (!str[x + 1]) {
-      //   diff = str[x - 1].charCodeAt(0) - str[x].charCodeAt(0);
-      // } else {
-      //   diff = str[x].charCodeAt(0) - str[x + 1].charCodeAt(0);
-      // }
-      if (str[x].charCodeAt(0) > str[x + 1].charCodeAt(0)) {
-        res++;
-        x++;
-        continue;
-      }
-      x++;
-    }
-  });
+// Bind
+let obj = {
+  x: 100,
+  y: function () {
+    console.log(this);
+  },
+};
+let obj2 = { x: 0 };
 
-  return res;
+// let calX = obj.y;
+// calX.bind(obj);
+// calX();
+
+// console.log(Object.assign(obj, obj2));
+console.log();
+
+function closure(a: string) {
+  return function () {
+    return a;
+  };
 }
 
-console.log(minDeletionSize(['zyx', 'wvu', 'tsr']));
+let closureREs = closure('a');
+// console.log(closureREs());
+
+function whatIsThis() {
+  // @ts-ignore
+  console.log(this);
+}
+
+whatIsThis();
