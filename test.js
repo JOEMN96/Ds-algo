@@ -8,9 +8,11 @@ let arrpw = () => {
 
 let a = {
   b: 100,
-  x: () => {
-    console.log(this);
+  x: function () {
+    console.log(this.b);
   },
 };
 
-whatIsThis();
+let xx = { b: 101 };
+
+a.x.call(xx);
