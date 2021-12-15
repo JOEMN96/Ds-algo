@@ -99,7 +99,7 @@ class SinglyLinkedList {
     } else {
       let oldHead = this.head;
       this.head = newNode;
-      this.tail = oldHead;
+      newNode.next = oldHead;
     }
     this.length++;
     return this;
@@ -136,6 +136,51 @@ class SinglyLinkedList {
     curr.val = val;
     return true;
   }
+  // Naive way (My own way)
+  insert(val: string, index: number): boolean {
+    if (index < 0 || index > this.length) return false;
+    let curr = this.head;
+    let newNode = new Node(val);
+    let i = 0;
+    let prevNode: Node;
+    let nextNode: Node;
+    while (i < this.length) {
+      if (index == i) {
+        nextNode = curr;
+      } else if (i == index - 1) {
+        prevNode = curr;
+      }
+      curr = curr.next;
+      i++;
+    }
+    if (nextNode == undefined) {
+      prevNode.next = newNode;
+    } else if (prevNode == undefined) {
+      let curr = this.head;
+      this.head = newNode;
+      this.head.next = curr;
+    }
+    if (prevNode && nextNode) {
+      let nxt = nextNode;
+      prevNode.next = newNode;
+      prevNode.next.next = nxt;
+    }
+    this.length++;
+    return true;
+  }
+  //  Proper Way
+  insert2(val: string, index: number): boolean {
+    if (index > this.length || index < 0) return false;
+    if (index == this.length) return !!this.push(val);
+    if (index == 0) return (this.unShift(val) as unknown) as boolean;
+    let newNode = new Node(val);
+    let prevNode = this.get(index - 1);
+    let temp = prevNode.next;
+    prevNode.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -161,6 +206,7 @@ list.push('New3');
 // console.log(list.pop2());
 // console.log(list.pop2());
 // console.log(list.length);
+console.log(list.insert2('heyD', 0));
 
 console.log(list);
 
