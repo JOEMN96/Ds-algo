@@ -96,29 +96,62 @@ class SinglyLinkedList {
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
+    } else {
+      let oldHead = this.head;
+      this.head = newNode;
+      this.tail = oldHead;
     }
-    newNode.next = this.head;
     this.length++;
     return this;
+  }
+
+  get(index: number): Node | undefined {
+    if (index >= this.length || index < 0) {
+      return undefined;
+    }
+    let i = 0;
+    let curr = this.head;
+    while (i !== index) {
+      curr = curr.next;
+      i++;
+    }
+    return curr;
+  }
+  // using method 1
+  set(index: number, val: string): boolean {
+    let nodeToReplace = this.get(index);
+    if (!nodeToReplace) return false;
+    nodeToReplace.val = val;
+    return true;
+  }
+
+  set2(index: number, val: string): boolean {
+    if (index < 0 || index >= this.length) return false;
+    let i = 0;
+    let curr = this.head;
+    while (i !== index) {
+      curr = curr.next;
+      i++;
+    }
+    curr.val = val;
+    return true;
   }
 }
 
 let list = new SinglyLinkedList();
 
-list.push('Hi');
-list.push('Joe');
-list.push('Mon');
-list.push('Pop');
-list.shift();
-list.shift();
-list.shift();
-list.shift();
-list.shift();
-list.push('New');
+// list.push('Hi');
+// list.push('Joe');
+// list.push('New');
+// list.shift();
+// list.shift();
+list.unShift('unshift');
 list.push('New2');
-list.shift();
-list.shift();
-list.unShift('Hey');
+list.push('New3');
+// list.unShift('unshift2');
+// console.log(list.get(1));
+// console.log(list.set(2, 'setVal'));
+// console.log(list.set2(2, 'setVal2'));
 
 // console.log(list.pop());
 // console.log(list.pop());
