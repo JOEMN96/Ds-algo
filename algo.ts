@@ -181,6 +181,32 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+  print(): void {
+    let arr: string[] = [];
+    let curr = this.head;
+    while (curr) {
+      arr.push(curr.val);
+      curr = curr.next;
+    }
+    console.log(arr);
+  }
+  reverse(): SinglyLinkedList {
+    let currNode = this.head;
+    this.head = this.tail;
+    this.tail = currNode;
+    let prev = null;
+    let next;
+
+    for (let i = 0; i < this.length; i++) {
+      next = currNode.next;
+      currNode.next = prev;
+      prev = currNode;
+      currNode = next;
+    }
+    return this;
+    // [0  ,  1    ,2   ,3]
+    // curr  next
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -190,9 +216,9 @@ let list = new SinglyLinkedList();
 // list.push('New');
 // list.shift();
 // list.shift();
-list.unShift('unshift');
-list.push('New2');
-list.push('New3');
+list.unShift('1');
+list.push('2');
+list.push('3');
 // list.unShift('unshift2');
 // console.log(list.get(1));
 // console.log(list.set(2, 'setVal'));
@@ -206,9 +232,9 @@ list.push('New3');
 // console.log(list.pop2());
 // console.log(list.pop2());
 // console.log(list.length);
-console.log(list.insert2('heyD', 0));
-
-console.log(list);
+list.insert2('0', 0);
+list.reverse();
+list.print();
 
 // class Node2 {
 //   public val: string;
