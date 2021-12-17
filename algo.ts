@@ -207,6 +207,20 @@ class SinglyLinkedList {
     // [0  ,  1    ,2   ,3]
     // curr  next
   }
+  reverse2(): SinglyLinkedList {
+    let currNode = this.head;
+    this.head = this.tail;
+    this.tail = currNode;
+    let prev = null;
+    let next;
+    for (let i = 0; i < this.length; i++) {
+      next = currNode.next;
+      currNode.next = prev;
+      prev = currNode;
+      currNode = next;
+    }
+    return this;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -233,7 +247,8 @@ list.push('3');
 // console.log(list.pop2());
 // console.log(list.length);
 list.insert2('0', 0);
-list.reverse();
+list.reverse2();
+
 list.print();
 
 // class Node2 {
