@@ -1,4 +1,4 @@
-function insertionSort2(arr: number[]) {
+function insertionSort(arr: number[]) {
   for (let i = 1; i < arr.length; i++) {
     let curr = arr[i];
 
@@ -7,7 +7,8 @@ function insertionSort2(arr: number[]) {
     }
     arr[j + 1] = curr;
   }
+
   console.log(arr);
 }
 
-insertionSort2([1, 4, -1, 2, 8, 3, 9, 5]);
+insertionSort([1, 4, -1, 2, 8, 3, 9, 5]);
