@@ -7,7 +7,7 @@ function selectionSort(arr: number[]) {
       }
     }
     // If statement is for preventing unnecessary swaps
-    if (1 != lowest) {
+    if (i != lowest) {
       let temp = arr[i];
       arr[i] = arr[lowest];
       arr[lowest] = temp;

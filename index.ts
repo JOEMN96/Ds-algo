@@ -1,13 +1,26 @@
-function insertionSort2(arr: number[]) {
-  for (let i = 1; i < arr.length; i++) {
-    let curr = arr[i];
-
-    for (var j = i - 1; j >= 0 && arr[j] > curr; j--) {
-      arr[j + 1] = arr[j];
+function merge(arr1: number[], arr2: number[]): number[] {
+  let i = 0;
+  let j = 0;
+  let res = [];
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] > arr2[j]) {
+      res.push(arr2[j]);
+      j++;
+    } else {
+      res.push(arr1[i]);
+      i++;
     }
-    arr[j + 1] = curr;
   }
-  console.log(arr);
+  while (i < arr1.length) {
+    res.push(arr1[i]);
+    i++;
+  }
+  while (j < arr2.length) {
+    res.push(arr2[j]);
+    j++;
+  }
+
+  return res;
 }
 
-insertionSort2([1, 4, -1, 2, 8, 3, 9, 5]);
+merge([100], [4, 1, 5]);
