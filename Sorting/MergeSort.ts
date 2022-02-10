@@ -35,3 +35,5 @@ function mergeSort(arr: number[]) {
 }
 
 console.log(mergeSort([100, 10, 20, 1, 34, 3, 90, 7]));
+
+// BigO of O(n log n)
